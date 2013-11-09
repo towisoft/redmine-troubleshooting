@@ -1,3 +1,6 @@
 # English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  permission_troubleshooting_view: Use Troubleshooting
+  permission_troubleshooting_manage: Manage Troubleshooting
+
+  project_module_troubleshooting: Troubleshooting

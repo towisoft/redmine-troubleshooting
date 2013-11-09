@@ -1,0 +1,4 @@
+~/redmine-2.3.3-1/ruby/bin/rake redmine:plugins:migrate NAME=troubleshooting VERSION=0
+
+~/redmine-2.3.3-1/ruby/bin/ruby script/rails console
+

@@ -1,1 +1,7 @@
-<h2>TroubleshootingController#index</h2>
+<h2>Questions</h2>
+
+<% @questions.each do |question| %>
+  <p>
+  	<%= question.description %> - <%= question.complexity %>
+  </p>
+<% end %>
