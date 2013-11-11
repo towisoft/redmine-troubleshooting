@@ -1,7 +1,14 @@
+<% html_title "Troubleshooting" %>
 <h2>Questions</h2>
 
 <% @questions.each do |question| %>
   <p>
-  	<%= question.description %> - <%= question.complexity %>
+  	<%= question.description %> - (Cplx: <%= question.complexity %>)
+  	<%= link_to 'Yes', { :action => 'respond', :id => question[:id], :answer => 'yes' }, :method => :get, :class => "answer yes" %> (<%= Answer.where(:result => true, :question_id => question).length %>)/
+  	<%= link_to 'No', { :action => 'respond', :id => question[:id], :answer => 'no' }, :method => :get, :class => "answer no" %> (<%= Answer.where(:result => false, :question_id => question).length %>)
   </p>
+<% end %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'troubleshooting', :plugin => 'troubleshooting' %>
 <% end %>

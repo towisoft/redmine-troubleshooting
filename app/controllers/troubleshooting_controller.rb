@@ -1,20 +1,23 @@
 class TroubleshootingController < ApplicationController
   unloadable
 
-  before_filter :find_project, :authorize, :only => :index
-
+  before_filter :find_project, :authorize, :only => [:index, :respond]
   def index
   	@questions = Question.where(:project_id => @project)
   end
 
   def manage
-  	@questions = Question.all
+  	redirect_to :action => 'index'
   end
+
+  def respond
+  	redirect_to :action => 'index'
+  end
+
 
   private
 
   def find_project
-    # @project variable must be set before calling the authorize filter
     @project = Project.find(params[:project_id])
   end
   
