@@ -1,10 +1,10 @@
-<% html_title "Troubleshooting" %>
-<h2>Questions</h2>
-<%
+<% 
+html_title "Troubleshooting"
+
 def appendAnswer(qid, answer='clear')
   newparams = {}
   params.each do |key, val|
-    if key.start_with? 'q_'
+    if key.start_with? 'q_' or key.eql? 'problem'
       newparams[key] = val
     end
   end
@@ -20,6 +20,12 @@ def clearAnswer(qid)
   return appendAnswer(qid)
 end
 %>
+
+<div class="contextual">
+  <%= link_to 'Pick problem', {:controller => 'problems', :action => 'index'}, :method => :get %>
+</div>
+
+<h2>Questions</h2>
 
 <% @questions.each do |question| %>
   <p>

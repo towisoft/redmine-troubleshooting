@@ -6,10 +6,6 @@ class TroubleshootingController < ApplicationController
   	@questions = Question.where(:project_id => @project)
   end
 
-  def manage
-  	redirect_to :action => 'index'
-  end
-
   def respond
   	redirect_to :action => 'index'
   end

@@ -7,7 +7,10 @@ Redmine::Plugin.register :troubleshooting do
   author_url 'https://github.com/towisoft/redmine-troubleshooting'
 
   project_module :troubleshooting do
-    permission :troubleshooting_view, :troubleshooting => :index
+    permission :troubleshooting_view, {
+    	:troubleshooting => :index, 
+    	:problems => [:index]
+    }
     permission :troubleshooting_manage, :troubleshooting => :manage
   end
   

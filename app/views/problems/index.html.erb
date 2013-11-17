@@ -1,0 +1,12 @@
+<% html_title "Troubleshooting" %>
+<h2>Problems</h2>
+
+<% @problems.each do |problem| %>
+  <p>
+  	<%= link_to problem.description, { :controller => 'troubleshooting', :action => 'index', :problem => problem[:id]}, :method => :get, :class => "problem" %>
+  </p>
+<% end %>
+
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'troubleshooting', :plugin => 'troubleshooting' %>
+<% end %>
