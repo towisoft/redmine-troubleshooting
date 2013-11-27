@@ -9,9 +9,9 @@ def appendAnswer(qid, answer='clear')
     end
   end
   if answer == 'clear'
-    newparams.delete('q_'<<qid)
+    newparams.delete('q_'<<qid.to_s)
   else
-    newparams['q_'<<qid] = answer
+    newparams['q_'<<qid.to_s] = answer
   end
   return newparams
 end
@@ -25,16 +25,42 @@ end
   <%= link_to 'Pick problem', {:controller => 'problems', :action => 'index'}, :method => :get %>
 </div>
 
-<h2>Questions</h2>
+<% unless @problem.nil? %>
+<h4>Problem: <%= @problem.description %></h4>
+<% end %>
 
+<h2>Questions</h2>
+<p>
+<% if @questions.empty? %>
+<i>no remaining questions</i>
+<% end %>
 <% @questions.each do |question| %>
-  <p>
   	<%= question.description %> - (Cplx: <%= question.complexity %>)
   	<%= link_to 'Yes', appendAnswer(question.id, 'yes'), :method => :get, :class => "answer yes" %> (<%= Answer.where(:result => true, :question_id => question).length %>)/
   	<%= link_to 'No', appendAnswer(question.id, 'no'), :method => :get, :class => "answer no" %> (<%= Answer.where(:result => false, :question_id => question).length %>)/
   	<%= link_to "Don't know", clearAnswer(question.id), :method => :get, :class => "answer dunno" %>
-  </p>
+  	<br/>
 <% end %>
+</p>
+
+<h2>Answers</h2>
+<p>
+<% @answeredQuestions.each do |question| %>
+  	<%= question.description %> - (Cplx: <%= question.complexity %>)
+  	<%= link_to 'Yes', appendAnswer(question.id, 'yes'), :method => :get, :class => "answer yes" %> (<%= Answer.where(:result => true, :question_id => question).length %>)/
+  	<%= link_to 'No', appendAnswer(question.id, 'no'), :method => :get, :class => "answer no" %> (<%= Answer.where(:result => false, :question_id => question).length %>)/
+  	<%= link_to "Don't know", clearAnswer(question.id), :method => :get, :class => "answer dunno" %>
+  	<br/>
+<% end %>
+</p>
+
+<h2>Causes</h2>
+<p>
+<% @causes.each do |cause| %>
+  	<%= cause.description %>
+  	<br/>
+<% end %>
+</p>
 
 <% content_for :header_tags do %>
     <%= stylesheet_link_tag 'troubleshooting', :plugin => 'troubleshooting' %>

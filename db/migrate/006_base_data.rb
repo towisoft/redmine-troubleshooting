@@ -19,7 +19,7 @@ class BaseData < ActiveRecord::Migration
 	Answer.create(:question_id=>1, :cause_id=>1, :result => 0)
 	Answer.create(:question_id=>2, :cause_id=>2, :result => 0)
 	Answer.create(:question_id=>3, :cause_id=>3, :result => 0)
-	Answer.create(:question_id=>4, :cause_id=>4, :result => 0)
+	Answer.create(:question_id=>4, :cause_id=>4, :result => 1)
 	
   end
   
