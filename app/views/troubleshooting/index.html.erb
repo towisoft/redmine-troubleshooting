@@ -43,7 +43,7 @@ end
 <% end %>
 </p>
 
-<h2>Answers</h2>
+<h2>Provied answers</h2>
 <p>
 <% @answeredQuestions.each do |question| %>
   	<%= question.description %> - (Cplx: <%= question.complexity %>)
@@ -54,7 +54,7 @@ end
 <% end %>
 </p>
 
-<h2>Causes</h2>
+<h2>Possible causes</h2>
 <p>
 <% @causes.each do |cause| %>
   	<%= cause.description %>
